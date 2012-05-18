@@ -1,0 +1,41 @@
+
+        <div class="box">
+
+            <div class="box users">
+                <h2 class="box">User list</h2>
+                <ul>
+                    <% for(var i = 0, len = users.length; i < len; i++) {
+                        var user = users[i];
+						console.log(user);
+                        var status = user.actived == 1 ? 'class="finished"' : '';
+                    %>
+                        <li <%- status %>>
+                            <% if(user.actived == 0) { %>
+                                <%= user.username %><%= user.password %>
+                                &nbsp;
+                                <a href="/user/<%- user.id%>/finish?status=yes">Active</a>,
+                            <% } else { %>
+                            <span class="del"><%= user.username %>  <%= user.password %></span>
+                                &nbsp;
+                                <a href="/user/<%- user.id%>/finish?status=no">Unactive</a>,
+                            <% } %>
+                            <a href="/user/<%- user.id%>/edit">Edit</a>,
+                            <a href="/user/<%- user.id%>/delete" 
+                                onclick="return confirm('Would you like to delete it, yes？')">Delete</a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+
+            <div class="box post">
+                <h2>Add new</h2>
+                <form action="/user/new" method="post" id="post_new">
+                    <input type="hidden" name="csrf" value="<%- csrf %>" />
+                    <p><input type="text" name="username" class="long_txt" /></p>
+					<p><input type="text" name="password" class="long_txt" /></p>
+                    <p><input type="submit" class="submit" value="Add" /></p>
+                </form>
+            </div>
+
+        </div>
+

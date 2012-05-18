@@ -1,0 +1,13 @@
+
+        <div class="box post">
+            <h2>Edit</h2>
+            <form action="?" method="post">
+                <input type="hidden" name="csrf" value="<%- csrf %>" />
+                <p><input type="text" name="username" class="long_txt" value="<%=user.username%>" /></p>
+ 				<p><input type="text" name="password" class="long_txt" value="<%=user.password%>" /></p>
+                <p>
+                    <input type="submit" class="submit" value="Save" />
+                </p>
+            </form>
+        </div>
+
